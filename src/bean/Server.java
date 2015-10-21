@@ -1,62 +1,59 @@
 package bean;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 
 /**
  * Created by ${Dotin} on ${4/25/2015}.
  */
-public class Server {
+public class Server extends Thread {
+
     private ServerSocket serverSocket;
-    private int portNumber;
     private Socket server;
+    private int portNumber;
+    private File core;
+    private RandomAccessFile serverLog;
 
     public Server(int portNumber) throws IOException {
         this.portNumber = portNumber;
         serverSocket = new ServerSocket(portNumber);
+        core = new File("core.json");
+        serverLog = new RandomAccessFile(new File("serverLog.xml"), "rw");
     }
 
-    public void run() throws IOException {
+    @Override
+    public void run() {
+        try {
+            while (true) {
 
-        Thread thread = new Thread(new Runnable() {
+                System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
+                server = serverSocket.accept();
+                System.out.println("Server : Got connection from : " + server.getInetAddress());
 
-            @Override
-            public void run() {
+                BufferedReader serverReader = new BufferedReader(new InputStreamReader(server.getInputStream()));
+                PrintWriter serverWriter = new PrintWriter(server.getOutputStream());
+                serverWriter.println("Server : Welcome to my server");
+                serverWriter.flush();
 
-                System.out.println("Waiting for client on port : " + serverSocket.getLocalPort());
-                try {
-                    server = serverSocket.accept();
-                    System.out.println("Just connected to a device with this IP : " + server.getInetAddress());
-
-                    DataInputStream serverInputStream = new DataInputStream(server.getInputStream());
-                    BufferedReader bufferedReader = null;
-                    bufferedReader = new BufferedReader((new InputStreamReader(server.getInputStream())));
-                    String clientMessageString = null;
-                    clientMessageString = bufferedReader.readLine();
-                    System.out.println("Message from client : " + clientMessageString);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
+                String message = serverReader.readLine();
+                while (!(message == null || message.equalsIgnoreCase("exit"))) {
+                    System.out.println("Server : MessageReceived: " + message);
+                    serverWriter.println(message);
+                    serverWriter.flush();
+                    message = serverReader.readLine();
                 }
-//                try {
-//                    DataOutputStream serverOutputStream = new DataOutputStream(server.getOutputStream());
-//                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(server.getOutputStream()));
-//                    bufferedWriter.write("Hello from Server");
-//                    bufferedWriter.flush();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-                try {
-                    server.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                server.close();
             }
-        });
-        thread.start();
+
+        } catch (SocketTimeoutException e) {
+            System.out.println("Server : Connection timed out");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    public void updateServerPort() {
+
+    }
 }
 

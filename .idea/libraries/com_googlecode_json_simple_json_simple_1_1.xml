@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="com.googlecode.json-simple:json-simple:1.1" type="repository">
+    <properties maven-id="com.googlecode.json-simple:json-simple:1.1" />
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/Maven1" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/Maven1" recursive="false" />
+  </library>
+</component>
