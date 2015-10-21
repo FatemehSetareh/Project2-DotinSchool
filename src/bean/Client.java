@@ -12,15 +12,15 @@ public class Client {
     int portNumber;
     String serverName;
 
-    public Client(int portNumber) {
+    public Client(String serverName, int portNumber) {
         this.portNumber = portNumber;
-        this.serverName = "127.0.0.1";
+        this.serverName = serverName;
     }
 
     public void run() throws IOException {
-        System.out.println("Connecting to " + serverName + " on port " + portNumber);
+        System.out.println("Connecting to server ...");
         Socket client = new Socket(InetAddress.getLocalHost(), portNumber);
-        System.out.println("Just connected to " + client.getLocalSocketAddress());
+        System.out.println("Just connected to server " + client.getLocalSocketAddress());
 
 //        DataInputStream clientInputStream = new DataInputStream(client.getInputStream());
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
