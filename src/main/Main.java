@@ -4,7 +4,11 @@ import bean.Client;
 import bean.Server;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import util.XmlParser;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 
@@ -22,9 +26,6 @@ public class Main {
 
         Thread client = new Client(serverName, portNumber);
         client.start();
-
-        JSONParser jsonParser =  new JSONParser();
-
 
     }
 }

@@ -1,5 +1,9 @@
 package bean;
 
+import util.XmlParser;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.net.*;
 
@@ -10,7 +14,7 @@ public class Server extends Thread {
 
     private ServerSocket serverSocket;
     private Socket server;
-    private int portNumber;
+    private Integer portNumber;
     private File core;
     private RandomAccessFile serverLog;
 
@@ -23,10 +27,21 @@ public class Server extends Thread {
 
     @Override
     public void run() {
+
+        try {
+            File inputFile = new File("clientInformation.xml");
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            XmlParser xmlParser = new XmlParser();
+            saxParser.parse(inputFile, xmlParser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         try {
             while (true) {
 
-                System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
+                System.out.println("\nServer : Waiting for client on port : " + serverSocket.getLocalPort());
                 server = serverSocket.accept();
                 System.out.println("Server : Got connection from : " + server.getInetAddress());
 

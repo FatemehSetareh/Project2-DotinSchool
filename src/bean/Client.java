@@ -9,7 +9,7 @@ import java.net.Socket;
  */
 public class Client extends Thread {
     private Socket client;
-    private int portNumber;
+    private Integer portNumber;
     private File clientInformation;
     private  RandomAccessFile clientLog;
 
@@ -18,6 +18,7 @@ public class Client extends Thread {
         clientInformation = new File("clientInformation.xml");
         clientLog = new RandomAccessFile(new File("clientLog.xml"),"rw");
     }
+
 
     @Override
     public void run() {
