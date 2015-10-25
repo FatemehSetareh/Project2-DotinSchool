@@ -24,15 +24,17 @@ public class Server extends Thread {
 
     @Override
     public void run() {
-        MyJsonParser myJsonParser = new MyJsonParser("core.json");
-        myJsonParser.parseJson();
-        myJsonParser.updateJson();
+       // MyJsonParser myJsonParser = new MyJsonParser("core.json");
+       // myJsonParser.parseJson();
+      //  myJsonParser.updateJson();
         try {
             while (true) {
 
                 System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
                 server = serverSocket.accept();
                 System.out.println("Server : Got connection from : " + server.getInetAddress());
+                Client client = new Client(InetAddress.getLocalHost().getHostName(),Main.portNumber, server);
+                client.start();
 
                 BufferedReader serverReader = new BufferedReader(new InputStreamReader(server.getInputStream()));
                 PrintWriter serverWriter = new PrintWriter(server.getOutputStream());
@@ -54,10 +56,6 @@ public class Server extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void updateServerPort() {
-
     }
 }
 

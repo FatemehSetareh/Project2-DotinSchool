@@ -26,8 +26,8 @@ public class MyJsonParser {
             this.jsonObject = (JSONObject) jsonParser.parse(new FileReader(JsonFilePath));
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (ParseException e1) {
+            e1.printStackTrace();
         }
     }
 

@@ -11,6 +11,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.Socket;
 
 /**
  * Created by ${Dotin} on ${4/25/2015}.
@@ -21,13 +22,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ParseException {
 
-        String serverName = InetAddress.getLocalHost().getHostName();
-
         Thread server = new Server(portNumber);
         server.start();
 
-        Thread client = new Client(serverName, portNumber);
+        Thread client = new Client(InetAddress.getLocalHost().getHostName(), portNumber,new Socket());
         client.start();
+
 
     }
 }

@@ -54,9 +54,9 @@ public class XmlParser extends DefaultHandler {
             transactionAmount = Integer.parseInt(attributes.getValue("amount"));
             transactionDeposit = Integer.parseInt(attributes.getValue("deposit"));
             System.out.println(" \ntransactionId :" + transactionId
-                    + " \ntransactionType :" + transactionType
-                    + " \ntransactionAmount :" + transactionAmount
-                    + " \ntransactionDeposit :" + transactionDeposit);
+                    + " \nType :" + transactionType
+                    + " \nAmount :" + transactionAmount
+                    + " \nDeposit :" + transactionDeposit);
         }
     }
 

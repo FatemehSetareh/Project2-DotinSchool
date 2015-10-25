@@ -17,7 +17,7 @@ public class Client extends Thread {
     private File clientInformation;
     private RandomAccessFile clientLog;
 
-    public Client(String serverName, int portNumber) throws FileNotFoundException {
+    public Client(String serverName, int portNumber, Socket socket) throws FileNotFoundException {
         clientInformation = new File("clientInformation.xml");
         clientLog = new RandomAccessFile(new File("clientLog.xml"), "rw");
     }
@@ -25,13 +25,11 @@ public class Client extends Thread {
 
     @Override
     public void run() {
-
         try {
-            File inputFile = new File("clientInformation.xml");
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             XmlParser xmlParser = new XmlParser();
-            saxParser.parse(inputFile, xmlParser);
+            saxParser.parse(clientInformation, xmlParser);
         } catch (Exception e) {
             e.printStackTrace();
         }
