@@ -1,9 +1,10 @@
 package bean;
 
-import util.XmlParser;
+import main.Main;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import util.MyJsonParser;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.net.*;
 
@@ -14,34 +15,22 @@ public class Server extends Thread {
 
     private ServerSocket serverSocket;
     private Socket server;
-    private Integer portNumber;
-    private File core;
     private RandomAccessFile serverLog;
 
-    public Server(int portNumber) throws IOException {
-        this.portNumber = portNumber;
+    public Server(int portNumber) throws IOException, ParseException {
         serverSocket = new ServerSocket(portNumber);
-        core = new File("core.json");
         serverLog = new RandomAccessFile(new File("serverLog.xml"), "rw");
     }
 
     @Override
     public void run() {
-
-        try {
-            File inputFile = new File("clientInformation.xml");
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            SAXParser saxParser = factory.newSAXParser();
-            XmlParser xmlParser = new XmlParser();
-            saxParser.parse(inputFile, xmlParser);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        MyJsonParser myJsonParser = new MyJsonParser("core.json");
+        myJsonParser.parseJson();
+        myJsonParser.updateJson();
         try {
             while (true) {
 
-                System.out.println("\nServer : Waiting for client on port : " + serverSocket.getLocalPort());
+                System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
                 server = serverSocket.accept();
                 System.out.println("Server : Got connection from : " + server.getInetAddress());
 

@@ -1,5 +1,10 @@
 package bean;
 
+import main.Main;
+import util.XmlParser;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -9,22 +14,30 @@ import java.net.Socket;
  */
 public class Client extends Thread {
     private Socket client;
-    private Integer portNumber;
     private File clientInformation;
-    private  RandomAccessFile clientLog;
+    private RandomAccessFile clientLog;
 
     public Client(String serverName, int portNumber) throws FileNotFoundException {
-        this.portNumber = portNumber;
         clientInformation = new File("clientInformation.xml");
-        clientLog = new RandomAccessFile(new File("clientLog.xml"),"rw");
+        clientLog = new RandomAccessFile(new File("clientLog.xml"), "rw");
     }
 
 
     @Override
     public void run() {
+
         try {
-            System.out.println("Client : Connecting to server ...");
-            Socket client = new Socket(InetAddress.getLocalHost(), portNumber);
+            File inputFile = new File("clientInformation.xml");
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            XmlParser xmlParser = new XmlParser();
+            saxParser.parse(inputFile, xmlParser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.out.println("\nClient : Connecting to server ...");
+            Socket client = new Socket(InetAddress.getLocalHost(), Main.portNumber);
             System.out.println("Client : Just connected to server " + client.getLocalSocketAddress());
 
             PrintWriter clientWriter = new PrintWriter(client.getOutputStream());

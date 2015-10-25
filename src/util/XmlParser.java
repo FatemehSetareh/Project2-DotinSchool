@@ -4,12 +4,17 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.stream.events.Characters;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /**
  * Created by ${Dotin} on ${4/25/2015}.
  */
 public class XmlParser extends DefaultHandler {
+    boolean bServer;
+
     private String terminalId;
     private String terminalType;
     private String serverIp;
@@ -33,6 +38,7 @@ public class XmlParser extends DefaultHandler {
                     + " \n terminalType :" + terminalType);
 
         } else if (qName.equals("server")) {
+            bServer = true;
             serverIp = attributes.getValue("ip");
             serverPort = attributes.getValue("port");
             System.out.println(" serverIp :" + serverIp
@@ -48,9 +54,9 @@ public class XmlParser extends DefaultHandler {
             transactionAmount = Integer.parseInt(attributes.getValue("amount"));
             transactionDeposit = Integer.parseInt(attributes.getValue("deposit"));
             System.out.println(" \ntransactionId :" + transactionId
-                    + " \n transactionType :" + transactionType
-                    + " \n transactionAmount :" + transactionAmount
-                    + " \n transactionDeposit :" + transactionDeposit);
+                    + " \ntransactionType :" + transactionType
+                    + " \ntransactionAmount :" + transactionAmount
+                    + " \ntransactionDeposit :" + transactionDeposit);
         }
     }
 
@@ -61,4 +67,12 @@ public class XmlParser extends DefaultHandler {
 //            System.out.println(" \n End Element :" + qName);
         }
     }
+//    @Override
+//    public void characters(char[] ch, int start, int length)
+//            throws SAXException {
+//        if (bServer){
+//            bServer = false;
+//        }
+//    }
+
 }
