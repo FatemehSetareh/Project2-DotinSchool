@@ -24,7 +24,7 @@ public class Server extends Thread {
 
     @Override
     public void run() {
-       // MyJsonParser myJsonParser = new MyJsonParser("core.json");
+       // MyJsonParser myJsonParser = new MyJsonParser(Main.jsonFilePath);
        // myJsonParser.parseJson();
       //  myJsonParser.updateJson();
         try {

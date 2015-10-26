@@ -32,7 +32,7 @@ public class MyJsonParser {
     }
 
     public void parseJson() {
-        String serverPort = (String) jsonObject.get("port");
+        Long serverPort = (Long) jsonObject.get("port");
         System.out.println("\n serverPort" + serverPort);
         JSONArray deposits = (JSONArray) jsonObject.get("deposits");
         Iterator i = deposits.iterator();

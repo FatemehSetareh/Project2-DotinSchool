@@ -2,6 +2,7 @@ package bean;
 
 import main.Main;
 import util.XmlParser;
+import util.XmlWriter;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -18,13 +19,14 @@ public class Client extends Thread {
     private RandomAccessFile clientLog;
 
     public Client(String serverName, int portNumber, Socket socket) throws FileNotFoundException {
-        clientInformation = new File("clientInformation.xml");
+        clientInformation = new File(Main.xmlFilePath);
         clientLog = new RandomAccessFile(new File("clientLog.xml"), "rw");
     }
 
 
     @Override
     public void run() {
+
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
@@ -33,6 +35,9 @@ public class Client extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        XmlWriter xmlWriter = new XmlWriter(Main.xmlFilePath);
+        xmlWriter.updateXml();
+
         try {
             System.out.println("\nClient : Connecting to server ...");
             Socket client = new Socket(InetAddress.getLocalHost(), Main.portNumber);

@@ -18,7 +18,10 @@ import java.net.Socket;
  */
 public class Main {
 
-    public static Integer portNumber = 1236;
+    public static Integer portNumber = 3456;
+    public static String ipAddress = "3.3.3.3";
+    public static String xmlFilePath = "clientInformation.xml";
+    public static String jsonFilePath = "core.json";
 
     public static void main(String[] args) throws IOException, ParseException {
 
