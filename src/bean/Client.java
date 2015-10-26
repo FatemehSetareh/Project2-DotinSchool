@@ -23,41 +23,21 @@ public class Client extends Thread {
         clientLog = new RandomAccessFile(new File("clientLog.xml"), "rw");
     }
 
-
     @Override
     public void run() {
-
-        try {
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            SAXParser saxParser = factory.newSAXParser();
-            XmlParser xmlParser = new XmlParser();
-            saxParser.parse(clientInformation, xmlParser);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        XmlWriter xmlWriter = new XmlWriter(Main.xmlFilePath);
-        xmlWriter.updateXml();
-
+//        XmlWriter xmlWriter = new XmlWriter(Main.xmlFilePath);
+//        xmlWriter.updateXml();
         try {
             System.out.println("\nClient : Connecting to server ...");
             Socket client = new Socket(InetAddress.getLocalHost(), Main.portNumber);
             System.out.println("Client : Just connected to server " + client.getLocalSocketAddress());
 
-            PrintWriter clientWriter = new PrintWriter(client.getOutputStream());
-            BufferedReader clientReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            System.out.println(clientReader.readLine());
-            BufferedReader clientConsulReader = new BufferedReader(new InputStreamReader(System.in));
-
-            String message;
-            while (true) {
-                System.out.print("Client : Enter message to echo or Exit to end: ");
-                message = clientConsulReader.readLine();
-                if (message == null || message.equalsIgnoreCase("exit"))
-                    break;
-                clientWriter.println(message);
-                clientWriter.flush();
-                System.out.println("Client : Echo from server: " + clientReader.readLine());
-            }
+            byte[] myByteArray = new byte[(int) clientInformation.length()];
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(clientInformation));
+            bufferedInputStream.read(myByteArray, 0, myByteArray.length);
+            OutputStream outputStream = client.getOutputStream();
+            outputStream.write(myByteArray, 0, myByteArray.length);
+            outputStream.flush();
 
             client.close();
         } catch (IOException e) {

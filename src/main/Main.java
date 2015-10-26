@@ -9,9 +9,11 @@ import util.XmlParser;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * Created by ${Dotin} on ${4/25/2015}.
@@ -23,13 +25,19 @@ public class Main {
     public static String xmlFilePath = "clientInformation.xml";
     public static String jsonFilePath = "core.json";
 
-    public static void main(String[] args) throws IOException, ParseException {
-
-        Thread server = new Server(portNumber);
-        server.start();
-
-        Thread client = new Client(InetAddress.getLocalHost().getHostName(), portNumber,new Socket());
-        client.start();
+    public static void main(String[] args) {
+        try {
+            Thread server = null;
+            server = new Server(portNumber);
+            server.start();
+            Thread client = null;
+            client = new Client(InetAddress.getLocalHost().getHostName(), portNumber, new Socket());
+            client.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
     }

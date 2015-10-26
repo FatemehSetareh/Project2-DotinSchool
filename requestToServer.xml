@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><terminal id="21374" type="ATM">
+	<server ip="3.3.3.3" port="3456"/>
+	<outLog path="term21374.log"/>
+	<transactions>
+		<transaction amount="3000" deposit="33227781" id="1" type="deposit"/>
+		<transaction amount="10000" deposit="35527439" id="2" type="withdraw"/>
+	</transactions>
+</terminal>
