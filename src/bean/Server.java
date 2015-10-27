@@ -17,26 +17,24 @@ import java.net.*;
 public class Server extends Thread {
     private ServerSocket serverSocket;
     private Socket server;
-    private RandomAccessFile serverLog;
+    private Integer portNumber;
 
     public Server(int portNumber) throws IOException, ParseException {
         serverSocket = new ServerSocket(portNumber);
-        serverLog = new RandomAccessFile(new File("serverLog.xml"), "rw");
+        this.portNumber = portNumber;
     }
 
     @Override
     public void run() {
-        // MyJsonParser myJsonParser = new MyJsonParser(Main.jsonFilePath);
-        // myJsonParser.parseJson();
-        //  myJsonParser.updateJson();
+
+//        MyJsonParser myJsonParser = new MyJsonParser("core.json");
+//        myJsonParser.parseJson();
+        //myJsonParser.updateJson();
         try {
             while (true) {
-
                 System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
                 server = serverSocket.accept();
                 System.out.println("Server : Got connection from : " + server.getInetAddress());
-                //Client client = new Client(InetAddress.getLocalHost().getHostName(),Main.portNumber, server);
-                //client.start();
 
                 //receive request file from client
                 byte[] myByteArray = new byte[1024];
@@ -47,17 +45,6 @@ public class Server extends Thread {
                 bufferedOutputStream.write(myByteArray, 0, bytesRead);
                 bufferedOutputStream.close();
                 System.out.println("Server : request received");
-
-                //parse the request file
-                try {
-                    SAXParserFactory factory = SAXParserFactory.newInstance();
-                    SAXParser saxParser = factory.newSAXParser();
-                    XmlParser xmlParser = new XmlParser();
-                    saxParser.parse("requestToServer.xml", xmlParser);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
 
                 server.close();
             }

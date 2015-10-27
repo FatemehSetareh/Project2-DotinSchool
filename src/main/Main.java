@@ -20,18 +20,16 @@ import java.net.UnknownHostException;
  */
 public class Main {
 
-    public static Integer portNumber = 1234;
-    public static String ipAddress = "4.4.4.4";
-    public static String xmlFilePath = "clientInformation.xml";
-    public static String jsonFilePath = "core.json";
+    //public Integer portNumber = 1234;
+    //public static String ipAddress = "4.4.4.4";
+    //public static String xmlFilePath = "clientInformation.xml";
+    //public static String jsonFilePath = "core.json";
 
     public static void main(String[] args) {
         try {
-            Thread server = null;
-            server = new Server(portNumber);
+            Thread server = new Server(1234);
             server.start();
-            Thread client = null;
-            client = new Client(InetAddress.getLocalHost().getHostName(), portNumber, new Socket());
+            Thread client = new Client(1234, "terminal.xml");
             client.start();
         } catch (IOException e) {
             e.printStackTrace();

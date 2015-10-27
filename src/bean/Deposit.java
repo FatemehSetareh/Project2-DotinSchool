@@ -11,17 +11,10 @@ public class Deposit {
     private Integer initialBalance;
     private Integer upperBound;
 
-    public Deposit() {
-        this.customer = customer;
-        this.depositId = depositId;
-        this.initialBalance = initialBalance;
-        this.upperBound = upperBound;
-    }
-
     public static Deposit search(Transaction transaction, ArrayList<Deposit> deposits) {
-        for (int i = 0; i < deposits.size(); i++) {
-            if (transaction.getTransactionDeposit() == deposits.get(i).depositId) {
-                return deposits.get(i);
+        for (Deposit deposit : deposits) {
+            if (transaction.getTransactionDeposit().equals(deposit.depositId)) {
+                return deposit;
             }
         }
         return null;
@@ -29,6 +22,10 @@ public class Deposit {
 
     public Integer getInitialBalance() {
         return initialBalance;
+    }
+
+    public void setInitialBalance(Integer initialBalance) {
+        this.initialBalance = initialBalance;
     }
 
     public Integer getUpperBound() {
