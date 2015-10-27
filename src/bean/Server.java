@@ -15,7 +15,6 @@ import java.net.*;
  * Created by ${Dotin} on ${4/25/2015}.
  */
 public class Server extends Thread {
-
     private ServerSocket serverSocket;
     private Socket server;
     private RandomAccessFile serverLog;
@@ -31,15 +30,6 @@ public class Server extends Thread {
         // myJsonParser.parseJson();
         //  myJsonParser.updateJson();
         try {
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            SAXParser saxParser = factory.newSAXParser();
-            XmlParser xmlParser = new XmlParser();
-            saxParser.parse("requestToServer.xml", xmlParser);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
             while (true) {
 
                 System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
@@ -48,6 +38,7 @@ public class Server extends Thread {
                 //Client client = new Client(InetAddress.getLocalHost().getHostName(),Main.portNumber, server);
                 //client.start();
 
+                //receive request file from client
                 byte[] myByteArray = new byte[1024];
                 InputStream inputStream = server.getInputStream();
                 FileOutputStream fileOutputStream = new FileOutputStream("requestToServer.xml");
@@ -55,6 +46,18 @@ public class Server extends Thread {
                 int bytesRead = inputStream.read(myByteArray, 0, myByteArray.length);
                 bufferedOutputStream.write(myByteArray, 0, bytesRead);
                 bufferedOutputStream.close();
+                System.out.println("Server : request received");
+
+                //parse the request file
+                try {
+                    SAXParserFactory factory = SAXParserFactory.newInstance();
+                    SAXParser saxParser = factory.newSAXParser();
+                    XmlParser xmlParser = new XmlParser();
+                    saxParser.parse("requestToServer.xml", xmlParser);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
                 server.close();
             }

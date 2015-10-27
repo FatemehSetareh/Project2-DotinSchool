@@ -20,8 +20,8 @@ import java.net.UnknownHostException;
  */
 public class Main {
 
-    public static Integer portNumber = 3456;
-    public static String ipAddress = "3.3.3.3";
+    public static Integer portNumber = 1234;
+    public static String ipAddress = "4.4.4.4";
     public static String xmlFilePath = "clientInformation.xml";
     public static String jsonFilePath = "core.json";
 
