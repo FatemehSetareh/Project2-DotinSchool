@@ -1,17 +1,16 @@
 package util;
 
+import bean.Client;
 import bean.Transaction;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class XmlParser extends DefaultHandler {
-    ArrayList<Transaction> transactionsArray = new ArrayList<Transaction>();
-
-    public XmlParser() {
-    }
+    public static ArrayList<Transaction> transactionsArray = new ArrayList<Transaction>();
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -41,10 +40,11 @@ public class XmlParser extends DefaultHandler {
                     + " \nType :" + transactionType
                     + " \nAmount :" + transactionAmount
                     + " \nDeposit :" + transactionDeposit);
+
+            System.out.println("... One transaction is ready to send ...");
             Transaction transaction = new Transaction();
             transactionsArray.add(transaction);
-            Processor processor = new Processor(transaction);
-            processor.process();
+            System.out.println(transactionsArray);
         }
     }
 }

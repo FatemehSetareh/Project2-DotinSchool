@@ -1,6 +1,5 @@
 package bean;
 
-import main.Main;
 import util.XmlParser;
 
 import javax.xml.parsers.SAXParser;
@@ -8,53 +7,64 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
-/**
- * Created by ${Dotin} on ${4/25/2015}.
- */
+
 public class Client extends Thread {
-    private File terminal;
     private Integer portNumber;
     private String xmlFilePath;
+    private Socket client;
+    BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+    //ObjectOutputStream objectOutputStream;
 
     public Client(int portNumber, String xmlFilePath) throws FileNotFoundException {
         this.portNumber = portNumber;
         this.xmlFilePath = xmlFilePath;
-        terminal = new File(xmlFilePath);
     }
 
     @Override
     public void run() {
-        //update serverIp and port in client information file
-//        XmlWriter xmlWriter = new XmlWriter(Main.xmlFilePath);
-//        xmlWriter.updateXml();
         try {
-            System.out.println("\nClient : Connecting to server ...");
-            Socket client = new Socket(InetAddress.getLocalHost(), portNumber);
-            System.out.println("Client : Just connected to server " + client.getLocalSocketAddress());
-
-            try {
-                SAXParserFactory factory = SAXParserFactory.newInstance();
-                SAXParser saxParser = factory.newSAXParser();
-                XmlParser xmlParser = new XmlParser();
-                saxParser.parse("terminal.xml", xmlParser);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-//            //**************send whole xmlFile as a request to server
-//            byte[] myByteArray = new byte[(int) terminal.length()];
-//            BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(terminal));
-//            bufferedInputStream.read(myByteArray, 0, myByteArray.length);
-//            OutputStream outputStream = client.getOutputStream();
-//            outputStream.write(myByteArray, 0, myByteArray.length);
-//            outputStream.flush();
-//            System.out.println("Client : request sent");
+            parseXmlFile(xmlFilePath);
+            clientConnect();
 
             client.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public Socket clientConnect() {
+        try {
+            System.out.println("\nClient " + getName() + ": Connecting to server ...");
+            client = new Socket(InetAddress.getLocalHost(), portNumber);
+            System.out.println("Client " + getName() + ": Just connected to server " + client.getLocalSocketAddress());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Client : cant connect to server");
+        }
+        return client;
+    }
+    public void parseXmlFile(String xmlFilePath){
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            XmlParser xmlParser = new XmlParser();
+            saxParser.parse(xmlFilePath, xmlParser);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public void sendRequestObjects(ArrayList<Transaction> arrayList) throws IOException {
+//        ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
+//        for (Transaction transaction : arrayList) {
+//            objectOutputStream.writeObject(transaction);
+//            objectOutputStream.flush();
+//            objectOutputStream.close();
+//            System.out.println("sending done!");
+//        }
+//    }
 
 }

@@ -1,11 +1,12 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by ${Dotin} on ${4/25/2015}.
  */
-public class Transaction {
+public class Transaction implements Serializable{
     private Integer transactionId;
     private String transactionType;
     private Integer transactionAmount;

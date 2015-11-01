@@ -20,11 +20,8 @@ public class Processor {
 
     public void process() {
         Deposit deposit = Deposit.search(transaction, MyJsonParser.depositsArray);
-        synchronized (this){
-            transaction.validateRequest(deposit);
-            transaction.calculateResponse(deposit);
-        }
-
+        transaction.validateRequest(deposit);
+        transaction.calculateResponse(deposit);
         responses.add(transaction);
 
     }

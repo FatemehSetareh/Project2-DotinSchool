@@ -18,19 +18,14 @@ import java.net.UnknownHostException;
 /**
  * Created by ${Dotin} on ${4/25/2015}.
  */
-public class Main {
-
-    //public Integer portNumber = 1234;
-    //public static String ipAddress = "4.4.4.4";
-    //public static String xmlFilePath = "clientInformation.xml";
-    //public static String jsonFilePath = "core.json";
+public class ServerMain {
 
     public static void main(String[] args) {
         try {
             Thread server = new Server(1234);
             server.start();
-            Thread client = new Client(1234, "terminal.xml");
-            client.start();
+           // System.in.read();
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {

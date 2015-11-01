@@ -1,23 +1,18 @@
 package bean;
 
-import main.Main;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import util.MyJsonParser;
-import util.XmlParser;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
-/**
- * Created by ${Dotin} on ${4/25/2015}.
- */
+
 public class Server extends Thread {
     private ServerSocket serverSocket;
     private Socket server;
     private Integer portNumber;
+    public static ArrayList<Client> clientsArray = new ArrayList<Client>();
 
     public Server(int portNumber) throws IOException, ParseException {
         serverSocket = new ServerSocket(portNumber);
@@ -26,31 +21,52 @@ public class Server extends Thread {
 
     @Override
     public void run() {
-
-//        MyJsonParser myJsonParser = new MyJsonParser("core.json");
-//        myJsonParser.parseJson();
-        //myJsonParser.updateJson();
         try {
+            MyJsonParser jsonParser = new MyJsonParser("core.json");
+            jsonParser.parseJson();
+
             while (true) {
                 System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
                 server = serverSocket.accept();
                 System.out.println("Server : Got connection from : " + server.getInetAddress());
 
-                //receive request file from client
-                byte[] myByteArray = new byte[1024];
-                InputStream inputStream = server.getInputStream();
-                FileOutputStream fileOutputStream = new FileOutputStream("requestToServer.xml");
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-                int bytesRead = inputStream.read(myByteArray, 0, myByteArray.length);
-                bufferedOutputStream.write(myByteArray, 0, bytesRead);
-                bufferedOutputStream.close();
-                System.out.println("Server : request received");
+//               while(bufferedReader.ready()){
+//                    receiveRequestObject();
+//                    System.out.println("received!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//             }
 
                 server.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-}
 
+    }
+
+//    public void acceptClient(){
+//        Thread thread = new Thread( new Runnable() {
+//            @Override
+//            public void run() {
+//                clientsArray.ensureCapacity(10);
+//                clientsArray.add(new Client(1234,))
+//            }
+//        });
+//        thread.start();
+//
+//    }
+
+
+
+//    public Transaction receiveRequestObject() throws IOException, ClassNotFoundException {
+//        ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
+//        while (objectInputStream.available()){
+//
+//        }
+//        Transaction transaction = (Transaction)objectInputStream.readObject();
+//        requestQueue.add(transaction);
+//        System.out.println("Server : " + transaction.toString());
+//        objectInputStream.close();
+//
+//        return transaction;
+//    }
+}
