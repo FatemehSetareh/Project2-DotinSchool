@@ -15,7 +15,6 @@ public class Client extends Thread {
     private String xmlFilePath;
     private Socket client;
     BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-    //ObjectOutputStream objectOutputStream;
 
     public Client(int portNumber, String xmlFilePath) throws FileNotFoundException {
         this.portNumber = portNumber;
@@ -26,7 +25,8 @@ public class Client extends Thread {
     public void run() {
         try {
             parseXmlFile(xmlFilePath);
-            clientConnect();
+            connectToServer();
+            serializeRequests(XmlParser.transactionsArray);
 
             client.close();
         } catch (Exception e) {
@@ -34,7 +34,8 @@ public class Client extends Thread {
         }
     }
 
-    public Socket clientConnect() {
+
+    public Socket connectToServer() {
         try {
             System.out.println("\nClient " + getName() + ": Connecting to server ...");
             client = new Socket(InetAddress.getLocalHost(), portNumber);
@@ -45,7 +46,8 @@ public class Client extends Thread {
         }
         return client;
     }
-    public void parseXmlFile(String xmlFilePath){
+
+    public void parseXmlFile(String xmlFilePath) {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
@@ -57,14 +59,11 @@ public class Client extends Thread {
         }
     }
 
-//    public void sendRequestObjects(ArrayList<Transaction> arrayList) throws IOException {
-//        ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-//        for (Transaction transaction : arrayList) {
-//            objectOutputStream.writeObject(transaction);
-//            objectOutputStream.flush();
-//            objectOutputStream.close();
-//            System.out.println("sending done!");
-//        }
-//    }
-
+    public void serializeRequests(ArrayList<Transaction> transactionsArray) throws IOException {
+        for (Transaction transaction : transactionsArray) {
+            String request = transaction.transactionToString();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
+            objectOutputStream.writeObject(request);
+        }
+    }
 }

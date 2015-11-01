@@ -2,6 +2,7 @@ package bean;
 
 import org.json.simple.parser.ParseException;
 import util.MyJsonParser;
+import util.Processor;
 
 import java.io.*;
 import java.net.*;
@@ -12,11 +13,10 @@ public class Server extends Thread {
     private ServerSocket serverSocket;
     private Socket server;
     private Integer portNumber;
-    public static ArrayList<Client> clientsArray = new ArrayList<Client>();
 
     public Server(int portNumber) throws IOException, ParseException {
-        serverSocket = new ServerSocket(portNumber);
         this.portNumber = portNumber;
+        serverSocket = new ServerSocket(portNumber);
     }
 
     @Override
@@ -28,45 +28,35 @@ public class Server extends Thread {
             while (true) {
                 System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
                 server = serverSocket.accept();
-                System.out.println("Server : Got connection from : " + server.getInetAddress());
+                System.out.println("Server : Got connection from  " + server.getInetAddress());
 
-//               while(bufferedReader.ready()){
-//                    receiveRequestObject();
-//                    System.out.println("received!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//             }
+                ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
+                String request = (String) objectInputStream.readObject();
+                System.out.println("Request Received: " + request);
+
+
+                System.out.println(stringToTransaction(request));
+
+                Processor processor = new Processor(stringToTransaction(request));
+                processor.process();
+
 
                 server.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
     }
 
-//    public void acceptClient(){
-//        Thread thread = new Thread( new Runnable() {
-//            @Override
-//            public void run() {
-//                clientsArray.ensureCapacity(10);
-//                clientsArray.add(new Client(1234,))
-//            }
-//        });
-//        thread.start();
-//
-//    }
-
-
-
-//    public Transaction receiveRequestObject() throws IOException, ClassNotFoundException {
-//        ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
-//        while (objectInputStream.available()){
-//
-//        }
-//        Transaction transaction = (Transaction)objectInputStream.readObject();
-//        requestQueue.add(transaction);
-//        System.out.println("Server : " + transaction.toString());
-//        objectInputStream.close();
-//
-//        return transaction;
-//    }
+    public Transaction stringToTransaction(String request) {
+        String[] str = request.split(",");
+        Integer transactionId = Integer.getInteger(str[0]);
+        String transactionType = str[1];
+        Integer transactionAmount = Integer.getInteger(str[2]);
+        Integer transactionDeposit = Integer.getInteger(str[3]);
+        return new Transaction(transactionId, transactionType, transactionAmount, transactionDeposit);
+    }
 }

@@ -24,26 +24,26 @@ public class MyJsonParser {
         reader.beginObject();
         reader.nextName();
         Integer serverPort = reader.nextInt();
-        System.out.println("serverPort : " + serverPort);
+        //System.out.println("serverPort : " + serverPort);
         reader.nextName();
         reader.beginArray();
         while (reader.hasNext()) {
             reader.beginObject();
             reader.nextName();
             String customer = reader.nextString();
-            System.out.println("customer : " + customer);
+            //System.out.println("customer : " + customer);
             reader.nextName();
             Integer depositId = reader.nextInt();
-            System.out.println("depositId : " + depositId);
+            //System.out.println("depositId : " + depositId);
             reader.nextName();
             Integer initialBalance = reader.nextInt();
-            System.out.println("initialBalance : " + initialBalance);
+            //System.out.println("initialBalance : " + initialBalance);
             reader.nextName();
             Integer upperBound = reader.nextInt();
-            System.out.println("upperBound : " + upperBound);
+            //System.out.println("upperBound : " + upperBound);
             reader.endObject();
 
-            Deposit deposit = new Deposit();
+            Deposit deposit = new Deposit(customer, depositId, initialBalance, upperBound);
             depositsArray.add(deposit);
             System.out.println("object" + depositsArray.toString());
         }

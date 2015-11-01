@@ -1,12 +1,8 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-/**
- * Created by ${Dotin} on ${4/25/2015}.
- */
-public class Transaction implements Serializable{
+public class Transaction implements Serializable,Cloneable{
     private Integer transactionId;
     private String transactionType;
     private Integer transactionAmount;
@@ -14,9 +10,15 @@ public class Transaction implements Serializable{
     private boolean requestIsValid;
     private Integer response;
 
+    public Transaction(Integer transactionId, String transactionType, Integer transactionAmount, Integer transactionDeposit) {
+        this.transactionId = transactionId;
+        this.transactionType = transactionType;
+        this.transactionAmount = transactionAmount;
+        this.transactionDeposit = transactionDeposit;
+    }
 
     public void validateRequest(Deposit deposit) {
-        if (transactionId == 1) {
+        if (transactionType.equals("deposit")) {
             if ( deposit.getUpperBound()< transactionAmount + deposit.getInitialBalance()) {
                 requestIsValid = false;
             }
@@ -42,8 +44,13 @@ public class Transaction implements Serializable{
         }
     }
 
+
     public Integer getTransactionDeposit() {
         return transactionDeposit;
+    }
+
+    public String transactionToString(){
+        return transactionId + "," + transactionType + "," + transactionAmount + "," + transactionDeposit + ",";
     }
 
 }

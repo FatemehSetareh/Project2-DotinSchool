@@ -2,14 +2,20 @@ package bean;
 
 import java.util.ArrayList;
 
-/**
- * Created by ${Dotin} on ${4/25/2015}.
- */
+
 public class Deposit {
-    private Integer customer;
+    private String customer;
     private Integer depositId;
     private Integer initialBalance;
     private Integer upperBound;
+
+    public Deposit(String customer, Integer depositId, Integer initialBalance, Integer upperBound) {
+        this.depositId = depositId;
+        this.initialBalance = initialBalance;
+        this.upperBound = upperBound;
+        this.customer = customer;
+
+    }
 
     public static Deposit search(Transaction transaction, ArrayList<Deposit> deposits) {
         for (Deposit deposit : deposits) {
