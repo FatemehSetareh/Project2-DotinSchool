@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class Transaction implements Serializable, Cloneable {
+public class Transaction implements Serializable {
     private Integer transactionId;
     private String transactionType;
     private Integer transactionAmount;
@@ -33,13 +33,10 @@ public class Transaction implements Serializable, Cloneable {
     }
 
     public void calculateResponse(Deposit deposit) {
-        //Integer response;
         if (requestIsValid) {
             if (transactionType.equals("deposit")) {
-                //response = transactionAmount + deposit.getInitialBalance();
                 deposit.setInitialBalance(transactionAmount + deposit.getInitialBalance());
             } else {
-                //response = deposit.getInitialBalance() - transactionAmount;
                 deposit.setInitialBalance(deposit.getInitialBalance() - transactionAmount);
             }
         } else {

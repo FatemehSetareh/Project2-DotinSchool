@@ -40,19 +40,20 @@ public class Server extends Thread {
                 server = serverSocket.accept();
                 System.out.println("Server : Got connection from  " + currentThread().getName());
 
-                for (int i = 0; i <= 2; i++) {
+                //while(){}
+                for (int i = 0; i <= 4; i++) {
                     ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
                     String request = (String) objectInputStream.readObject();
                     System.out.println("Request Received: " + request);
-                    logger.log(Level.SEVERE, "request: ", request);
+                    //logger.log(Level.SEVERE, "request: ", request);
 
                     Transaction transaction = stringToTransaction(request);
                     Deposit deposit = search(transaction, MyJsonParser.depositsArray);
-                    deposit.setLock(false);
 
-                    synchronized (deposit){
+                    synchronized (deposit) {
                         transaction.validateRequest(deposit);
                         transaction.calculateResponse(deposit);
+                        sendResponse(deposit.getInitialBalance());
                     }
                 }
 
@@ -84,5 +85,11 @@ public class Server extends Thread {
         }
         System.out.println("This transaction does not match with any deposit in my json file");
         return null;
+    }
+
+    public void sendResponse(Integer response) throws IOException {
+        DataOutputStream send = new DataOutputStream(server.getOutputStream());
+        send.writeInt(response);
+        System.out.println("Send response successfully" + response);
     }
 }

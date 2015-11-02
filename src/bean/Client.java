@@ -8,13 +8,16 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 
 public class Client extends Thread {
     private Integer portNumber;
     private String xmlFilePath;
+    private String loggerPath = "123456.log";
     private Socket client;
-    //BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+    RandomAccessFile responseFile = new RandomAccessFile("response.xml", "rw");
 
     public Client(int portNumber, String xmlFilePath) throws FileNotFoundException {
         this.portNumber = portNumber;
@@ -24,11 +27,24 @@ public class Client extends Thread {
     @Override
     public void run() {
         try {
+            Logger logger = Logger.getLogger(Server.class.getName());
+            try {
+                FileHandler handler = new FileHandler(loggerPath, true);
+                logger.addHandler(handler);
+            } catch (IOException e) {
+                throw new IllegalStateException("Could not add file handler.", e);
+            }
+
             parseXmlFile(xmlFilePath);
             connectToServer();
             serializeRequests(XmlParser.transactionsArray);
 
-            client.close();
+            //while(){}
+            for (int i = 0; i <= 4; i++) {
+                receiveResponse();
+            }
+
+            // client.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,5 +81,10 @@ public class Client extends Thread {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
             objectOutputStream.writeObject(request);
         }
+    }
+
+    public void receiveResponse() throws IOException {
+        DataInputStream receive = new DataInputStream(client.getInputStream());
+        responseFile.writeBytes("<response initialBalance = \"" + String.valueOf(receive.readInt()) + "\" /> \n");
     }
 }

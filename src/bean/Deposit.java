@@ -8,14 +8,12 @@ public class Deposit {
     private Integer depositId;
     private Integer initialBalance;
     private Integer upperBound;
-    private boolean lock;
 
-    public Deposit(String customer, Integer depositId, Integer initialBalance, Integer upperBound, boolean lock) {
+    public Deposit(String customer, Integer depositId, Integer initialBalance, Integer upperBound) {
         this.depositId = depositId;
         this.initialBalance = initialBalance;
         this.upperBound = upperBound;
         this.customer = customer;
-        this.lock = lock;
 
     }
 
@@ -35,11 +33,4 @@ public class Deposit {
         return depositId;
     }
 
-    public boolean isLock() {
-        return lock;
-    }
-
-    public void setLock(boolean lock) {
-        this.lock = lock;
-    }
 }

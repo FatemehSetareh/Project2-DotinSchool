@@ -43,7 +43,7 @@ public class MyJsonParser {
             //System.out.println("upperBound : " + upperBound);
             reader.endObject();
 
-            Deposit deposit = new Deposit(customer, depositId, initialBalance, upperBound, true);
+            Deposit deposit = new Deposit(customer, depositId, initialBalance, upperBound);
             depositsArray.add(deposit);
             //System.out.println("object" + depositsArray.toString());
         }
@@ -51,5 +51,6 @@ public class MyJsonParser {
         reader.endArray();
         reader.nextName();
         String serverOutLog = reader.nextString();
+        System.out.println("parsing json file finished :)");
     }
 }
