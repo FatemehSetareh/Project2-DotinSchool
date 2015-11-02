@@ -14,7 +14,7 @@ public class Client extends Thread {
     private Integer portNumber;
     private String xmlFilePath;
     private Socket client;
-    BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+    //BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 
     public Client(int portNumber, String xmlFilePath) throws FileNotFoundException {
         this.portNumber = portNumber;
@@ -39,7 +39,7 @@ public class Client extends Thread {
         try {
             System.out.println("\nClient " + getName() + ": Connecting to server ...");
             client = new Socket(InetAddress.getLocalHost(), portNumber);
-            System.out.println("Client " + getName() + ": Just connected to server " + client.getLocalSocketAddress());
+            System.out.println("Client " + currentThread().getName() + ": Just connected to server " + client.getLocalSocketAddress());
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Client : cant connect to server");

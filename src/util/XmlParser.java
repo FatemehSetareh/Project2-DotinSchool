@@ -47,7 +47,7 @@ public class XmlParser extends DefaultHandler {
 //            request = request.concat(transaction.transactionToString());
 //            System.out.println(request);
             transactionsArray.add(transaction);
-            System.out.println(transactionsArray);
+            //System.out.println(transactionsArray);
         }
     }
 

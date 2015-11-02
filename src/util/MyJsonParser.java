@@ -43,9 +43,9 @@ public class MyJsonParser {
             //System.out.println("upperBound : " + upperBound);
             reader.endObject();
 
-            Deposit deposit = new Deposit(customer, depositId, initialBalance, upperBound);
+            Deposit deposit = new Deposit(customer, depositId, initialBalance, upperBound, true);
             depositsArray.add(deposit);
-            System.out.println("object" + depositsArray.toString());
+            //System.out.println("object" + depositsArray.toString());
         }
 
         reader.endArray();

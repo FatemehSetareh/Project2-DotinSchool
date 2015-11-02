@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-11-02T13:34:32</date>
+  <millis>1446458672574</millis>
+  <sequence>0</sequence>
+  <logger>bean.Server</logger>
+  <level>SEVERE</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>request: </message>
+  <param>1,deposit,3000,33227781,</param>
+</record>
+<record>
+  <date>2015-11-02T13:34:32</date>
+  <millis>1446458672591</millis>
+  <sequence>1</sequence>
+  <logger>bean.Server</logger>
+  <level>SEVERE</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>request: </message>
+  <param>2,withdraw,10000,35527439,</param>
+</record>
+<record>
+  <date>2015-11-02T13:34:32</date>
+  <millis>1446458672592</millis>
+  <sequence>2</sequence>
+  <logger>bean.Server</logger>
+  <level>SEVERE</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>request: </message>
+  <param>3,withdraw,5000,35527441,</param>
+</record>
