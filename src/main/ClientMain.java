@@ -12,8 +12,8 @@ public class ClientMain {
             client.start();
             Thread client1 = new Client(1234, "terminal1.xml");
             client1.start();
-//            Thread client2 = new Client(1234, "terminal2.xml");
-//            client2.start();
+            Thread client2 = new Client(1234, "terminal2.xml");
+            client2.start();
 //            Thread client3 = new Client(1234, "terminal3.xml");
 //            client3.start();
 

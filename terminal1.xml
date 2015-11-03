@@ -2,7 +2,7 @@
 	<server ip="5.5.5.5" port="5555"/>
 	<outLog path="term11111.log"/>
 	<transactions>
-        <transaction id="4" type="deposit" amount="4000" deposit="35527440"/>
+        <transaction id="4" type="deposit" amount="4000" deposit="35527442"/>
         <transaction id="5" type="withdraw" amount="20000" deposit="35527441"/>
 	</transactions>
 </terminal>

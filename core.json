@@ -1,42 +1,42 @@
 ﻿{
-    "port":8080,
-    "deposits":[
+    "port": 8080,
+    "deposits": [
         {
-            "customer":"Ali Alavi",
-            "id":"33227781",
-            "initialBalance":"1000",
-            "upperBound":"10000"
+            "customer": "Ali Alavi",
+            "id": "33227781",
+            "initialBalance": "1000",
+            "upperBound": "10000"
         },
         {
-            "customer":"Reza Rezaei",
-            "id":"35527439",
-            "initialBalance":"0",
-            "upperBound":"0"
+            "customer": "Reza Rezaei",
+            "id": "35527439",
+            "initialBalance": "0",
+            "upperBound": "0"
         },
         {
-            "customer":"Hasan Hasani",
-            "id":"35527440",
-            "initialBalance":"5000",
-            "upperBound":"15000"
+            "customer": "Hasan Hasani",
+            "id": "35527440",
+            "initialBalance": "5000",
+            "upperBound": "15000"
         },
         {
-            "customer":"Hosein Hoseini",
-            "id":"35527441",
-            "initialBalance":"3000",
-            "upperBound":"17000"
+            "customer": "Hosein Hoseini",
+            "id": "35527441",
+            "initialBalance": "3000",
+            "upperBound": "17000"
         },
         {
-            "customer":"Mohammad Mohammadi",
-            "id":"35527442",
-            "initialBalance":"20000",
-            "upperBound":"50000"
+            "customer": "Mohammad Mohammadi",
+            "id": "35527442",
+            "initialBalance": "20000",
+            "upperBound": "50000"
         },
         {
-            "customer":"Ahmad Ahmadi",
-            "id":"35527443",
-            "initialBalance":"3000",
-            "upperBound":"10000"
+            "customer": "Ahmad Ahmadi",
+            "id": "35527443",
+            "initialBalance": "3000",
+            "upperBound": "10000"
         }
     ],
-    "outLog":"server.out"
+    "outLog": "server.out"
 }

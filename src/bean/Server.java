@@ -27,13 +27,13 @@ public class Server extends Thread {
             MyJsonParser jsonParser = new MyJsonParser("core.json");
             jsonParser.parseJson();
 
-            Logger logger = Logger.getLogger(Server.class.getName());
-            try {
-                FileHandler handler = new FileHandler("server.out", true);
-                logger.addHandler(handler);
-            } catch (IOException e) {
-                throw new IllegalStateException("Could not add file handler.", e);
-            }
+//            Logger logger = Logger.getLogger(Server.class.getName());
+//            try {
+//                FileHandler handler = new FileHandler("server.out", true);
+//                logger.addHandler(handler);
+//            } catch (IOException e) {
+//                throw new IllegalStateException("Could not add file handler.", e);
+//            }
 
             while (true) {
                 System.out.println("Server : Waiting for client on port : " + serverSocket.getLocalPort());
@@ -41,9 +41,10 @@ public class Server extends Thread {
                 System.out.println("Server : Got connection from  " + currentThread().getName());
 
                 //while(){}
-                for (int i = 0; i <= 4; i++) {
+                String request;
+                do {
                     ObjectInputStream objectInputStream = new ObjectInputStream(server.getInputStream());
-                    String request = (String) objectInputStream.readObject();
+                    request = (String) objectInputStream.readObject();
                     System.out.println("Request Received: " + request);
                     //logger.log(Level.SEVERE, "request: ", request);
 
@@ -55,7 +56,7 @@ public class Server extends Thread {
                         transaction.calculateResponse(deposit);
                         sendResponse(deposit.getInitialBalance());
                     }
-                }
+                } while (request != null);
 
                 server.close();
             }

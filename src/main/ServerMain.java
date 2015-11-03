@@ -24,7 +24,6 @@ public class ServerMain {
         try {
             Thread server = new Server(1234);
             server.start();
-           // System.in.read();
 
         } catch (IOException e) {
             e.printStackTrace();
