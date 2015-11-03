@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-11-03T15:06:55</date>
+  <millis>1446550615808</millis>
+  <sequence>0</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Json file parsed successfully.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:55</date>
+  <millis>1446550615824</millis>
+  <sequence>1</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server initialized at port : 1234</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617694</millis>
+  <sequence>2</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server got connection from client </message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617700</millis>
+  <sequence>3</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 6,deposit,30000,35527442,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617701</millis>
+  <sequence>4</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617701</millis>
+  <sequence>5</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617702</millis>
+  <sequence>6</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Validated the request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617703</millis>
+  <sequence>7</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Calculated the response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617707</millis>
+  <sequence>8</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server sent the response to client.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617708</millis>
+  <sequence>9</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 4,deposit,4000,35527442,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617708</millis>
+  <sequence>10</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617709</millis>
+  <sequence>11</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617709</millis>
+  <sequence>12</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Validated the request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617710</millis>
+  <sequence>13</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Calculated the response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617711</millis>
+  <sequence>14</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server sent the response to client.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617711</millis>
+  <sequence>15</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 1,deposit,3000,33227784,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617712</millis>
+  <sequence>16</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617712</millis>
+  <sequence>17</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617713</millis>
+  <sequence>18</sequence>
+  <logger>bean.Server</logger>
+  <level>SEVERE</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>This deposit is not in my DB.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617713</millis>
+  <sequence>19</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 5,withdraw,20000,35527441,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617714</millis>
+  <sequence>20</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617714</millis>
+  <sequence>21</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617715</millis>
+  <sequence>22</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Validated the request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617715</millis>
+  <sequence>23</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Calculated the response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617716</millis>
+  <sequence>24</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server sent the response to client.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617717</millis>
+  <sequence>25</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 7,withdraw,10000,35527442,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617717</millis>
+  <sequence>26</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617718</millis>
+  <sequence>27</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617718</millis>
+  <sequence>28</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Validated the request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617719</millis>
+  <sequence>29</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Calculated the response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617720</millis>
+  <sequence>30</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server sent the response to client.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617720</millis>
+  <sequence>31</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 2,notValid,10000,35527442,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617721</millis>
+  <sequence>32</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617721</millis>
+  <sequence>33</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617722</millis>
+  <sequence>34</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Validated the request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617722</millis>
+  <sequence>35</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Calculated the response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617723</millis>
+  <sequence>36</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server sent the response to client.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617723</millis>
+  <sequence>37</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server received a request : 3,withdraw,-5000,35527442,</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617724</millis>
+  <sequence>38</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server Convert the string request to an Transaction object.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617725</millis>
+  <sequence>39</sequence>
+  <logger>bean.Server</logger>
+  <level>INFO</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Server search his DB and find the deposit of received request.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617727</millis>
+  <sequence>40</sequence>
+  <logger>bean.Server</logger>
+  <level>SEVERE</level>
+  <class>bean.Server</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Amount of transaction is negative.</message>
+</record>

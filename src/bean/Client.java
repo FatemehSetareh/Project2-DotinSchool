@@ -5,43 +5,46 @@ import util.XmlParser;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class Client extends Thread {
     private Integer portNumber;
+    private String serverIP;
+    private String outLogPath;
     private String xmlFilePath;
-    private String loggerPath = "123456.log";
     private Socket client;
-    RandomAccessFile responseFile = new RandomAccessFile("response.xml", "rw");
     private String response;
+    RandomAccessFile responseFile = new RandomAccessFile("response.xml", "rw");
+    private Logger logger = Logger.getLogger(Client.class.getName());
 
-    public Client(int portNumber, String xmlFilePath) throws FileNotFoundException {
-        this.portNumber = portNumber;
+    public Client(String xmlFilePath) throws FileNotFoundException {
         this.xmlFilePath = xmlFilePath;
     }
 
     @Override
     public void run() {
         try {
-//            Logger logger = Logger.getLogger(Server.class.getName());
-//            try {
-//                FileHandler handler = new FileHandler(loggerPath, true);
-//                logger.addHandler(handler);
-//            } catch (IOException e) {
-//                throw new IllegalStateException("Could not add file handler.", e);
-//            }
-
+            /*Parse XML file*/
             parseXmlFile(xmlFilePath);
+            logger.log(Level.INFO, "Xml file parsed successfully. ");
+            /* Add logger to log client actions */
+            FileHandler handler = new FileHandler(outLogPath, true);
+            logger.addHandler(handler);
+
             connectToServer();
+            logger.log(Level.INFO, "Client connected to server on port : " + portNumber + ".");
+
             serializeRequests(XmlParser.transactionsArray);
+            logger.log(Level.INFO, "Client serialized his request to send to server.");
 
             do {
                 receiveResponse();
+                logger.log(Level.INFO, "Client received his response.");
             } while (response != null);
 
             // client.close();
@@ -54,7 +57,7 @@ public class Client extends Thread {
     public Socket connectToServer() {
         try {
             System.out.println("\nClient " + getName() + ": Connecting to server ...");
-            client = new Socket(InetAddress.getLocalHost(), portNumber);
+            client = new Socket(serverIP, portNumber);
             System.out.println("Client " + currentThread().getName() + ": Just connected to server " + client.getLocalSocketAddress());
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,7 +72,9 @@ public class Client extends Thread {
             SAXParser saxParser = factory.newSAXParser();
             XmlParser xmlParser = new XmlParser();
             saxParser.parse(xmlFilePath, xmlParser);
-
+            outLogPath = xmlParser.getOutLogPath();
+            portNumber = xmlParser.getServerPort();
+            serverIP = xmlParser.getServerIp();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,9 +88,12 @@ public class Client extends Thread {
         }
     }
 
-    public void receiveResponse() throws IOException {
-        DataInputStream receive = new DataInputStream(client.getInputStream());
-        response = String.valueOf(receive.readInt());
-        responseFile.writeBytes("<response initialBalance = \"" + response + "\" /> \n");
+    public void receiveResponse() throws IOException, ClassNotFoundException {
+        ObjectInputStream receive = new ObjectInputStream(client.getInputStream());
+        response = (String) receive.readObject();
+        System.out.println(response);
+        /*Write response in response.xml file*/
+        responseFile.writeBytes(response);
+        logger.log(Level.INFO, "response : " + response);
     }
 }

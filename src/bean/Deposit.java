@@ -1,15 +1,16 @@
 package bean;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
 public class Deposit {
     private String customer;
     private Integer depositId;
-    private Integer initialBalance;
-    private Integer upperBound;
+    private BigDecimal initialBalance;
+    private BigDecimal upperBound;
 
-    public Deposit(String customer, Integer depositId, Integer initialBalance, Integer upperBound) {
+    public Deposit(String customer, Integer depositId, BigDecimal initialBalance, BigDecimal upperBound) {
         this.depositId = depositId;
         this.initialBalance = initialBalance;
         this.upperBound = upperBound;
@@ -17,15 +18,15 @@ public class Deposit {
 
     }
 
-    public Integer getInitialBalance() {
+    public BigDecimal getInitialBalance() {
         return initialBalance;
     }
 
-    public void setInitialBalance(Integer initialBalance) {
+    public void setInitialBalance(BigDecimal initialBalance) {
         this.initialBalance = initialBalance;
     }
 
-    public Integer getUpperBound() {
+    public BigDecimal getUpperBound() {
         return upperBound;
     }
 

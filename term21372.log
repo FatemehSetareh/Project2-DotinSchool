@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617694</millis>
+  <sequence>3</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>12</thread>
+  <message>Client connected to server on port : 1234.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617694</millis>
+  <sequence>5</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Client connected to server on port : 1234.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617694</millis>
+  <sequence>4</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client connected to server on port : 1234.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617700</millis>
+  <sequence>6</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client serialized his request to send to server.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617700</millis>
+  <sequence>8</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>12</thread>
+  <message>Client serialized his request to send to server.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617700</millis>
+  <sequence>7</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Client serialized his request to send to server.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617707</millis>
+  <sequence>9</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "35527442" result = "Success" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617708</millis>
+  <sequence>10</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617711</millis>
+  <sequence>11</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "35527442" result = "Failure" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617711</millis>
+  <sequence>12</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617713</millis>
+  <sequence>13</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "33227784" result = "Failure &lt;error &lt;does not find deposit /&gt; /&gt;" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617713</millis>
+  <sequence>14</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617719</millis>
+  <sequence>15</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "35527441" result = "Failure" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617720</millis>
+  <sequence>16</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617721</millis>
+  <sequence>17</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "35527442" result = "Success" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617721</millis>
+  <sequence>18</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617725</millis>
+  <sequence>19</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "35527442" result = "Failure" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617726</millis>
+  <sequence>20</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617727</millis>
+  <sequence>21</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>receiveResponse</method>
+  <thread>13</thread>
+  <message>response : &lt;transaction id = "35527442" result = "Failure &lt;error &lt;transaction amount is negative ! /&gt; /&gt;" /&gt; 
+</message>
+</record>
+<record>
+  <date>2015-11-03T15:06:57</date>
+  <millis>1446550617728</millis>
+  <sequence>22</sequence>
+  <logger>bean.Client</logger>
+  <level>INFO</level>
+  <class>bean.Client</class>
+  <method>run</method>
+  <thread>13</thread>
+  <message>Client received his response.</message>
+</record>

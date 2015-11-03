@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><terminal id="21374" type="ATM">
-	<server ip="4.4.4.4" port="1234"/>
-	<outLog path="term21374.log"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><terminal id="21372" type="ATM">
+	<server ip="127.0.0.1" port="1234"/>
+	<outLog path="term21372.log"/>
 	<transactions>
-		<transaction id="1" type="deposit" amount="3000" deposit="33227781"/>
-		<transaction id="2" type="withdraw" amount="10000" deposit="35527442"/>
-        <transaction id="3" type="withdraw" amount="5000" deposit="35527442"/>
+		<transaction id="1" type="deposit" amount="3000" deposit="33227784"/>
+		<transaction id="2" type="notValid" amount="10000" deposit="35527442"/>
+        <transaction id="3" type="withdraw" amount="-5000" deposit="35527442"/>
 	</transactions>
 </terminal>

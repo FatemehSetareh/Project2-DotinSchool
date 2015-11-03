@@ -1,7 +1,7 @@
-<response initialBalance = "24000" /> 
-<response initialBalance = "24000" /> 
-<response initialBalance = "4000" /> 
-<response initialBalance = "3000" /> 
-<response initialBalance = "14000" /> 
-<response initialBalance = "4000" /> 
-<response initialBalance = "4000" /> 
+<transaction id = "35527442" result = "Success" /> 
+<transaction id = "35527442" result = "Failure" /> 
+<transaction id = "33227784" result = "Failure <error <does not find deposit /> />" /> 
+<transaction id = "35527441" result = "Failure" /> 
+<transaction id = "35527442" result = "Success" /> 
+<transaction id = "35527442" result = "Failure" /> 
+<transaction id = "35527442" result = "Failure <error <transaction amount is negative ! /> />" /> 

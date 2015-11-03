@@ -5,14 +5,14 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
-/**
- * Created by DotinSchool2 on 10/20/2015.
- */
+
 public class MyJsonParser {
     public static ArrayList<Deposit> depositsArray;
     private String jsonFilePath;
+    private Integer serverPort;
 
     public MyJsonParser(String jsonFilePath) {
         this.jsonFilePath = jsonFilePath;
@@ -23,7 +23,7 @@ public class MyJsonParser {
         JsonReader reader = new JsonReader(new FileReader(jsonFilePath));
         reader.beginObject();
         reader.nextName();
-        Integer serverPort = reader.nextInt();
+        serverPort = reader.nextInt();
         //System.out.println("serverPort : " + serverPort);
         reader.nextName();
         reader.beginArray();
@@ -36,10 +36,10 @@ public class MyJsonParser {
             Integer depositId = reader.nextInt();
             //System.out.println("depositId : " + depositId);
             reader.nextName();
-            Integer initialBalance = reader.nextInt();
+            BigDecimal initialBalance = new BigDecimal(reader.nextString());
             //System.out.println("initialBalance : " + initialBalance);
             reader.nextName();
-            Integer upperBound = reader.nextInt();
+            BigDecimal upperBound = new BigDecimal(reader.nextString());
             //System.out.println("upperBound : " + upperBound);
             reader.endObject();
 
@@ -52,5 +52,9 @@ public class MyJsonParser {
         reader.nextName();
         String serverOutLog = reader.nextString();
         System.out.println("parsing json file finished :)");
+    }
+
+    public Integer getServerPort() {
+        return serverPort;
     }
 }

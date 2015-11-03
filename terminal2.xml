@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><terminal id="21374" type="ATM">
-	<server ip="2.2.2.2" port="2222"/>
+	<server ip="127.0.0.1" port="1234"/>
 	<outLog path="term21374.log"/>
 	<transactions>
         <transaction id="6" type="deposit" amount="30000" deposit="35527442"/>
